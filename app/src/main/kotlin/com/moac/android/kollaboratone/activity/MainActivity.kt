@@ -35,8 +35,11 @@ class MainActivity : AppCompatActivity(), SurfaceHolder.Callback {
     override fun surfaceCreated(holder: SurfaceHolder) {
         Log.d("InstrumentController", "InstrumentView surfaceCreated()")
         arenaSurfaceView?.let {
-            instrumentRunner = InstrumentMaker(it.width, it.height).createInstrumentRunner()
-            instrumentRunner?.start(holder)
+            InstrumentMaker(it.width, it.height).apply {
+                instrumentRunner = createInstrumentRunner()
+                arenaSurfaceView?.setOnTouchListener(createIteractionMonitor())
+                instrumentRunner?.start(holder)
+            }
         }
     }
 

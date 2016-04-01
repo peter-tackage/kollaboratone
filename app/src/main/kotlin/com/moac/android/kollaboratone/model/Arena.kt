@@ -20,9 +20,6 @@ class Arena(val xMax: Int,
         })
     }
 
-    // 04-01 16:35:53.156 829-844/com.moac.android.kollaboratone V/Renderer: Rendering: Ball(id=1, octaveNote=OctaveNote(note=A, octaveDelta=0), color=4294198070, radius=150.0, xpos=358.0, ypos=124458.0, velocity=Velocity(xSpeed=0, ySpeed=50, xDirection=NONE, yDirection=UP), isTouched=false)
-
-
     private fun updateBall(): (Ball) -> Ball {
         return { old ->
             // TODO Potentially too many allocations here.
@@ -82,7 +79,7 @@ class Arena(val xMax: Int,
     }
 
     private fun Ball.move(): Ball {
-        if (this.isTouched) {
+        if (this.isHeld) {
             return this
         }
         return this.copy(this.xpos + this.velocity.xSpeed * this.velocity.xDirection.indicator,

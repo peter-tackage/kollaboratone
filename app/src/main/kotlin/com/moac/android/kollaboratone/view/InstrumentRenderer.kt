@@ -4,13 +4,13 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import com.moac.android.kollaboratone.instrument.Instrument
-import com.moac.android.kollaboratone.model.Arena
+import com.moac.android.kollaboratone.model.Ball
 
 class InstrumentRenderer(val paint: Paint) {
 
     fun render(instrument: Instrument, canvas: Canvas) {
         drawBackground(canvas)
-        drawBalls(instrument.arena, canvas)
+        drawBalls(instrument.shapes(), canvas)
     }
 
     private fun drawBackground(canvas: Canvas) {
@@ -18,9 +18,9 @@ class InstrumentRenderer(val paint: Paint) {
         canvas.drawColor(Color.WHITE);
     }
 
-    private fun drawBalls(arena: Arena, canvas: Canvas) {
+    private fun drawBalls(shapes: Collection<Ball>, canvas: Canvas) {
         // Draw the balls
-        arena.getShapes().forEach {
+        shapes.forEach {
             //   Log.v("Renderer", "Rendering: %s".format(it))
             paint.color = it.color.toInt()
             canvas.drawCircle(it.xpos, it.ypos, it.radius, this.paint);

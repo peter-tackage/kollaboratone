@@ -5,11 +5,11 @@ import android.view.View
 import com.moac.android.kollaboratone.instrument.Instrument
 import com.moac.android.kollaboratone.model.Ball
 
-class InteractionMonitor(val instrument: Instrument) : View.OnTouchListener {
+class InstrumentInteractor(val instrument: Instrument) : View.OnTouchListener {
 
     override fun onTouch(view: View?, event: MotionEvent?): Boolean {
         event?.let {
-            instrument.shapes().map { shape ->
+            for (shape in instrument.shapes()) {
                 if (event.action == MotionEvent.ACTION_DOWN) {
                     // delegating event handling to the obj
                     if (event.isInside(shape)) {
@@ -33,8 +33,7 @@ class InteractionMonitor(val instrument: Instrument) : View.OnTouchListener {
                         return true
                     }
                 }
-                return false;
-            }.distinct()
+            }
         }
         return false;
     }

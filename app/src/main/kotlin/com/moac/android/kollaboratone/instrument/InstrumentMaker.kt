@@ -1,8 +1,8 @@
 package com.moac.android.kollaboratone.instrument
 
 import android.graphics.Paint
+import com.moac.android.kollaboratone.controller.InstrumentInteractor
 import com.moac.android.kollaboratone.controller.InstrumentRunner
-import com.moac.android.kollaboratone.controller.InteractionMonitor
 import com.moac.android.kollaboratone.model.*
 import com.moac.android.kollaboratone.player.NoOpPlayer
 import com.moac.android.kollaboratone.player.NotePlayer
@@ -14,7 +14,7 @@ class InstrumentMaker(val width: Int, val height: Int) {
 
     fun createInstrumentRunner() = InstrumentRunner(provideInstrument(), createInstrumentRenderer())
 
-    fun createIteractionMonitor() = InteractionMonitor(provideInstrument())
+    fun createIteractionMonitor() = InstrumentInteractor(provideInstrument())
 
     private fun createInstrumentRenderer() = InstrumentRenderer(createPaint())
 

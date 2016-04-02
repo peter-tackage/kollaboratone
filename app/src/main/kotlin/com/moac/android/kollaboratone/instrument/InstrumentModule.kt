@@ -46,7 +46,7 @@ class InstrumentModule(val width: Int, val height: Int, val playerModule: Player
         return listOf(b1, b2, b2plus1, b3, b4, b3plus1)
     }
 
-    private val WORLD_SPEED: Float = 3.0F
+    private val WORLD_SPEED: Float = 2.0F
     private val KEY: List<Note> = listOf(Note.A, Note.B, Note.C, Note.D, Note.E, Note.F, Note.G)
     private val COLORS: List<Long> = listOf(0xfff44336, 0xffe91e63, 0xff09c27b0, 0xfff673ab7,
             0xff3f51b5, 0xff2196f3, 0xff03a9f4, 0xff4caf50, 0xffffeb3b)

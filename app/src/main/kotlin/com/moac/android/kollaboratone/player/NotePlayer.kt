@@ -4,7 +4,16 @@ import com.moac.android.kollaboratone.model.OctaveNote
 
 interface NotePlayer {
 
-    fun isReady(): Boolean = false
+    fun init()
 
-    fun play(note: OctaveNote) = {}
+    fun startAudio()
+
+    fun stopAudio()
+
+    fun dispose()
+
+    fun playNotes(note1: OctaveNote, note2: OctaveNote)
+
+    fun silence()
+
 }

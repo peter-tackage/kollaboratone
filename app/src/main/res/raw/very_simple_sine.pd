@@ -1,0 +1,10 @@
+De#N canvas 224 336 450 300 10;
+#X obj 182 180 dac~;
+#X obj 181 143 osc~;
+#X obj 241 95 r freq2;
+#X obj 257 145 osc~;
+#X obj 177 96 r freq1;
+#X connect 1 0 0 0;
+#X connect 2 0 3 0;
+#X connect 3 0 0 1;
+#X connect 4 0 1 0;

@@ -50,10 +50,6 @@ class InstrumentInteractor(val instrument: Instrument) : View.OnTouchListener {
         val dx: Double = Math.pow(x - circleCenterX, 2.toDouble())
         val dy: Double = Math.pow(y - circleCenterY, 2.toDouble())
 
-        if ((dx + dy) < Math.pow(circleRadius, 2.toDouble())) {
-            return true;
-        } else {
-            return false;
-        }
+        return (dx + dy) < Math.pow(circleRadius, 2.toDouble())
     }
 }

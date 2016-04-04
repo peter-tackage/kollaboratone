@@ -21,8 +21,8 @@ class InstrumentRenderer(val context: Context) {
         //  Log.v("Renderer", "### Starting to draw bitmap")
         // val drawable: Drawable = context.resources.getDrawable(R.drawable.space, context.theme)
         //   drawable.setBounds(0, 0, canvas.width, canvas.height);
-        //  canvas.drawColor(Color.WHITE)
-        canvas.drawBitmap(bitmap, null, Rect(0, 0, canvas.width, canvas.height), Paint())
+          canvas.drawColor(Color.WHITE)
+       // canvas.drawBitmap(bitmap, null, Rect(0, 0, canvas.width, canvas.height), Paint())
         //   Log.v("Renderer", "### Finished to draw bitmap")
 
     }

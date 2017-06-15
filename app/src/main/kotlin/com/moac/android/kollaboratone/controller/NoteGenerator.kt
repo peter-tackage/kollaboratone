@@ -7,7 +7,7 @@ import com.moac.android.kollaboratone.model.Overlap
 class NoteGenerator {
 
     fun handleOverlaps(balls: Collection<Ball>, f: (Collection<Pair<OctaveNote, OctaveNote>>) -> Unit) {
-        f.invoke(calculateOverlaps(balls).map { thing -> Pair(thing.note1, thing.note2) })
+        f(calculateOverlaps(balls).map { thing -> Pair(thing.note1, thing.note2) })
     }
 
     private fun calculateOverlaps(balls: Collection<Ball>): List<Overlap> {

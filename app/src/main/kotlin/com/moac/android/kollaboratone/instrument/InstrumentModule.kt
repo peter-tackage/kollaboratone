@@ -9,20 +9,11 @@ import com.moac.android.kollaboratone.view.RendererModule
 
 class InstrumentModule(val width: Int, val height: Int, val playerModule: PlayerModule, val rendererModule: RendererModule) {
 
-    private var instrument: Instrument? = null;
+    val instrument by lazy  { Instrument(provideArena(), provideOverlapDetector(), playerModule.createPlayer())}
 
-    fun provideInstrumentRunner() = InstrumentRunner(provideInstrument(), rendererModule.provideRenderer())
+    fun provideInstrumentRunner() = InstrumentRunner(instrument, rendererModule.provideRenderer())
 
-    fun provideIteractionMonitor() = InstrumentInteractor(provideInstrument())
-
-    private fun provideInstrument(): Instrument {
-        synchronized(this, {
-            if (this.instrument == null) {
-                this.instrument = Instrument(provideArena(), provideOverlapDetector(), playerModule.createPlayer())
-            }
-        })
-        return this.instrument!! // bah.
-    }
+    fun provideIteractionMonitor() = InstrumentInteractor(instrument)
 
     private fun provideArena(): Arena {
         val arena = Arena(width, height)

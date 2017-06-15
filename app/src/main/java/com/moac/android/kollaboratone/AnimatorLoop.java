@@ -12,10 +12,10 @@ public class AnimatorLoop extends Thread {
 
     private static String TAG = AnimatorLoop.class.getSimpleName();
 
-    private final static int MAX_FPS = 50;                  // desired fps
-    private final static int MAX_FRAME_SKIPS = 5;
+    private static final int MAX_FPS = 50;                  // desired fps
+    private static final int MAX_FRAME_SKIPS = 5;
     // maximum number of frames to be skipped
-    private final static int FRAME_PERIOD = 1000 / MAX_FPS; // the frame period
+    private static final int FRAME_PERIOD = 1000 / MAX_FPS; // the frame period
 
     private volatile boolean mIsRunning = true;
 
@@ -38,8 +38,8 @@ public class AnimatorLoop extends Thread {
         Log.d(TAG, "Starting animation loop");
 
         long beginTime;          // the time when the cycle begun
-        long timeDiff = 0;      // the time it took for the cycle to execute
-        int sleepTime = 0;      // ms to sleep (<0 if we're behind)
+        long timeDiff;      // the time it took for the cycle to execute
+        int sleepTime;      // ms to sleep (<0 if we're behind)
         int framesSkipped;      // number of frames being skipped
 
         while (mIsRunning) {
@@ -69,14 +69,12 @@ public class AnimatorLoop extends Thread {
                         try {
                             // send the thread to sleep for a short period
                             // very useful for battery saving
-                            Thread.sleep(sleepTime);
+                            wait(sleepTime);
                         } catch (InterruptedException e) {
                         }
                     }
 
                     while (sleepTime < 0 && framesSkipped < MAX_FRAME_SKIPS) {
-
-                        //	Log.d(TAG, "Catching up on updates");
 
                         // we need to catch up
                         // update without rendering

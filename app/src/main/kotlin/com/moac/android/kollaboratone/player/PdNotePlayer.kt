@@ -58,7 +58,7 @@ class PdNotePlayer(private val context: Context) : NotePlayer {
     private fun initPd() {
         AudioParameters.init(context)
         val srate = max(MIN_SAMPLE_RATE, AudioParameters.suggestSampleRate())
-        PdAudio.initAudio(srate, 0, 2, 1, true)
+        PdAudio.initAudio(srate, 0, 2, 64, true)
 
         val dir: File = context.filesDir
         val patchFile = File(dir, "very_simple_sine.pd")

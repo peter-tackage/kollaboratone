@@ -29,7 +29,7 @@ class Instrument(private val arena: Arena,
         arena.addShape(ball.copy(false))
     }
 
-    fun shapes(): Collection<Ball> = arena.getShapes();
+    fun shapes(): Collection<Ball> = arena.getShapes()
 
     // This thing should listen to the Arena to determine overlaps and notify the NotePlayer
 }

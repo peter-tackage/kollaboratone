@@ -14,7 +14,7 @@ import com.moac.android.kollaboratone.view.RendererModule
 
 class MainActivity : AppCompatActivity(), SurfaceHolder.Callback {
 
-    private var player: NotePlayer? = null;
+    private var player: NotePlayer? = null
     private var instrumentRunner: InstrumentRunner? = null
     private var arenaSurfaceView: SurfaceView? = null
 
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity(), SurfaceHolder.Callback {
 
     override fun onDestroy() {
         super.onDestroy()
-        arenaSurfaceView = null;
+        arenaSurfaceView = null
         player?.dispose()
     }
 

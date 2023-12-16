@@ -6,7 +6,7 @@ import com.moac.android.kollaboratone.R
 import com.moac.android.kollaboratone.instrument.Instrument
 import com.moac.android.kollaboratone.model.Ball
 
-class InstrumentRenderer(val context: Context) {
+class InstrumentRenderer(context: Context) {
 
     private val bitmap: Bitmap = BitmapFactory.decodeResource(context.resources, R.drawable.space)
     private val shadowColor = Color.parseColor("#33000000")

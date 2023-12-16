@@ -1,14 +1,18 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
+kotlin {
+    jvmToolchain 8
+}
+
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    namespace "com.moac.android.kollaboratone"
 
     defaultConfig {
         applicationId "com.moac.android.kollaboratone"
-        minSdkVersion 21
-        targetSdkVersion 25
+        minSdk 21
+        compileSdk 25
+        targetSdk 25
         versionCode 1
         versionName "1.0"
     }
@@ -25,12 +29,11 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.2.1'
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:23.2.1'
 
-    compile 'org.puredata.android:pd-core:1.0.1'
+    implementation 'io.github.libpd.android:pd-core:1.2.1-rc6'
 
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile 'io.reactivex:rxjava:1.1.0'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'io.reactivex:rxjava:1.1.0'
 }

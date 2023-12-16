@@ -69,7 +69,7 @@ public class AnimatorLoop extends Thread {
                         try {
                             // send the thread to sleep for a short period
                             // very useful for battery saving
-                            wait(sleepTime);
+                            sleep(sleepTime);
                         } catch (InterruptedException e) {
                         }
                     }

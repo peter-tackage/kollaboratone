@@ -36,7 +36,6 @@ class PdNotePlayer(private val context: Context) : NotePlayer {
         val note2Hz: Float = shiftForOctave(note2)
         PdBase.sendFloat("freq1", note1Hz)
         PdBase.sendFloat("freq2", note2Hz)
-        //   PdBase.sendFloat("onOff", 1f)
     }
 
     private fun shiftForOctave(note: OctaveNote): Float {

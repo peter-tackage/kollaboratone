@@ -2,7 +2,7 @@
 #X obj 182 180 dac~;
 #X obj 241 95 r freq2;
 #X obj 177 96 r freq1;
-#X obj 181 143 phasor~;
+#X obj 181 143 osc~;
 #X obj 257 145 osc~;
 #X connect 1 0 4 0;
 #X connect 2 0 3 0;

@@ -11,13 +11,10 @@ class Instrument(private val arena: Arena,
 
     fun update() {
         arena.update()
-        overlapDetector.handleOverlaps(arena.getShapes(), {
-            if (it.isEmpty()) {
-                notePlayer.silence()
-            } else {
-                it.forEach { notePair -> notePlayer.playNotes(notePair.first, notePair.second) }
-            }
-        })
+        overlapDetector.handleOverlaps(arena.getShapes()) {
+            if (it.isEmpty()) notePlayer.silence()
+            else it.forEach { notePair -> notePlayer.playNotes(notePair.first, notePair.second) }
+        }
     }
 
     fun holdShape(ball: Ball) {

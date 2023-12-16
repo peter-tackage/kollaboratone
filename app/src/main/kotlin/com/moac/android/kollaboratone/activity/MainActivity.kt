@@ -26,9 +26,7 @@ class MainActivity : AppCompatActivity(), SurfaceHolder.Callback {
         player?.init()
 
         arenaSurfaceView = (findViewById(R.id.arena_surfaceView) as SurfaceView)
-        arenaSurfaceView?.let {
-            it.holder.addCallback(this)
-        }
+        arenaSurfaceView?.holder?.addCallback(this)
     }
 
     override fun onResume() {
@@ -56,7 +54,7 @@ class MainActivity : AppCompatActivity(), SurfaceHolder.Callback {
         arenaSurfaceView?.let {
             InstrumentModule(it.width, it.height, PlayerModule(this), RendererModule(this)).apply {
                 instrumentRunner = provideInstrumentRunner()
-                arenaSurfaceView?.setOnTouchListener(provideIteractionMonitor())
+                arenaSurfaceView?.setOnTouchListener(provideInteractionMonitor())
                 instrumentRunner?.start(holder)
             }
         }

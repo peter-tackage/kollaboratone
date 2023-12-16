@@ -8,13 +8,15 @@ import org.puredata.android.io.PdAudio
 import org.puredata.core.PdBase
 import org.puredata.core.utils.IoUtils
 import java.io.File
+import kotlin.math.max
 
-class PdNotePlayer(val context: Context) : NotePlayer {
-
-    private val MIN_SAMPLE_RATE = 44100;
+class PdNotePlayer(private val context: Context) : NotePlayer {
+    private companion object {
+        private const val MIN_SAMPLE_RATE = 44100
+    }
 
     override fun init() {
-        initPd();
+        initPd()
     }
 
     override fun startAudio() {
@@ -38,12 +40,12 @@ class PdNotePlayer(val context: Context) : NotePlayer {
     }
 
     private fun shiftForOctave(note: OctaveNote): Float {
-        if (note.octaveMultipler > 0) {
-            return note.note.frequency.times(2.times(note.octaveMultipler))
+        return if (note.octaveMultipler > 0) {
+            note.note.frequency.times(2.times(note.octaveMultipler))
         } else if (note.octaveMultipler < 0) {
-            return note.note.frequency.div(2.times(note.octaveMultipler))
+            note.note.frequency.div(2.times(note.octaveMultipler))
         } else {
-            return note.note.frequency
+            note.note.frequency
         }
     }
 
@@ -55,11 +57,11 @@ class PdNotePlayer(val context: Context) : NotePlayer {
 
     private fun initPd() {
         AudioParameters.init(context)
-        val srate = Math.max(MIN_SAMPLE_RATE, AudioParameters.suggestSampleRate())
+        val srate = max(MIN_SAMPLE_RATE, AudioParameters.suggestSampleRate())
         PdAudio.initAudio(srate, 0, 2, 1, true)
 
         val dir: File = context.filesDir
-        val patchFile: File = File(dir, "very_simple_sine.pd")
+        val patchFile = File(dir, "very_simple_sine.pd")
         IoUtils.extractResource(context.resources.openRawResource(R.raw.very_simple_sine),
                 patchFile.name, context.filesDir)
         //context.resources.ra

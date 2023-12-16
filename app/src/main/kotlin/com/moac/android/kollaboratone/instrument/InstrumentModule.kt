@@ -13,7 +13,7 @@ class InstrumentModule(val width: Int, val height: Int, val playerModule: Player
 
     fun provideInstrumentRunner() = InstrumentRunner(instrument, rendererModule.provideRenderer())
 
-    fun provideIteractionMonitor() = InstrumentInteractor(instrument)
+    fun provideInteractionMonitor() = InstrumentInteractor(instrument)
 
     private fun provideArena(): Arena {
         val arena = Arena(width, height)
@@ -28,11 +28,11 @@ class InstrumentModule(val width: Int, val height: Int, val playerModule: Player
         val widthSegment = width.div(7)
         val halfHeight = height.div(2).toFloat()
 
-        val b1: Ball = Ball("A-1", OctaveNote(KEY.get(0), -1), COLORS.get(0), 150F, widthSegment.toFloat(), halfHeight, Velocity(0, localSpeed(5), Direction.NONE, Direction.UP), false)
-        val b2: Ball = Ball("C", OctaveNote(KEY.get(2), 0), COLORS.get(2), 100F, (widthSegment * 2).toFloat(), halfHeight, Velocity(0, localSpeed(10), Direction.NONE, Direction.DOWN), false)
-        val b2plus1: Ball = Ball("C+1", OctaveNote(KEY.get(2), 1), COLORS.get(8), 80F, (widthSegment * 3).toFloat(), halfHeight, Velocity(0, localSpeed(12), Direction.NONE, Direction.DOWN), false)
-        val b3: Ball = Ball("E", OctaveNote(KEY.get(4), 0), COLORS.get(4), 100F, (widthSegment * 4).toFloat(), halfHeight, Velocity(0, localSpeed(15), Direction.NONE, Direction.UP), false)
-        val b4: Ball = Ball("G", OctaveNote(KEY.get(6), 0), COLORS.get(6), 100F, (widthSegment * 5).toFloat(), halfHeight, Velocity(0, localSpeed(20), Direction.NONE, Direction.DOWN), false)
+        val b1 = Ball("A-1", OctaveNote(KEY.get(0), -1), COLORS.get(0), 150F, widthSegment.toFloat(), halfHeight, Velocity(0, localSpeed(5), Direction.NONE, Direction.UP), false)
+        val b2 = Ball("C", OctaveNote(KEY.get(2), 0), COLORS.get(2), 100F, (widthSegment * 2).toFloat(), halfHeight, Velocity(0, localSpeed(10), Direction.NONE, Direction.DOWN), false)
+        val b2plus1 = Ball("C+1", OctaveNote(KEY.get(2), 1), COLORS.get(8), 80F, (widthSegment * 3).toFloat(), halfHeight, Velocity(0, localSpeed(12), Direction.NONE, Direction.DOWN), false)
+        val b3 = Ball("E", OctaveNote(KEY.get(4), 0), COLORS.get(4), 100F, (widthSegment * 4).toFloat(), halfHeight, Velocity(0, localSpeed(15), Direction.NONE, Direction.UP), false)
+        val b4 = Ball("G", OctaveNote(KEY.get(6), 0), COLORS.get(6), 100F, (widthSegment * 5).toFloat(), halfHeight, Velocity(0, localSpeed(20), Direction.NONE, Direction.DOWN), false)
         return listOf(b1, b2, b2plus1, b3, b4)
     }
 

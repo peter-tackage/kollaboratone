@@ -29,7 +29,7 @@ class InstrumentRenderer(val context: Context) {
 
     private fun drawBalls(shapes: Collection<Ball>, canvas: Canvas) {
         // Draw the balls
-        val paint: Paint = Paint()
+        val paint = Paint()
         shapes.forEach {
             paint.reset()
             paint.color = shadowColor
